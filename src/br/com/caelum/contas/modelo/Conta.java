@@ -1,6 +1,6 @@
 package br.com.caelum.contas.modelo;
 
-public class Conta {
+public abstract class Conta {
 
 	private int numero;
 	private String agencia;
@@ -43,4 +43,6 @@ public class Conta {
 		this.saldo -= valor;
 	}
 	
+	public abstract String getTipo();
+
 }
