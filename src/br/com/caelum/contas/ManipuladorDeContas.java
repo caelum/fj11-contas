@@ -10,7 +10,7 @@ public class ManipuladorDeContas {
 	private Conta conta;
 
 	public void criaConta(Evento evento) {
-		String tipo = evento.getSelecionado("tipo");
+		String tipo = evento.getSelecionadoNoRadio("tipo");
 		this.conta = tipo.equals("Conta Corrente") ? new ContaCorrente() : new ContaPoupanca();
 		this.conta.setAgencia(evento.getString("agencia"));
 		this.conta.setNumero(evento.getInt("numero"));
@@ -25,6 +25,11 @@ public class ManipuladorDeContas {
 	public void deposita(Evento evento) {
 		double valor = evento.getDouble("valorOperacao");
 		conta.deposita(valor);
+	}
+
+	public void transfere(Evento evento) {
+		Conta destino = (Conta) evento.getSelecionadoNoCombo("destino");
+		conta.transfere(evento.getDouble("valorTransferencia"), destino);
 	}
 
 }

@@ -6,7 +6,7 @@ public abstract class Conta {
 	private String agencia;
 	private String titular;
 	private double saldo;
-	
+
 	public int getNumero() {
 		return numero;
 	}
@@ -42,7 +42,17 @@ public abstract class Conta {
 	public void saca(double valor) {
 		this.saldo -= valor;
 	}
-	
+
+	public void transfere(double valor, Conta conta) {
+		this.saca(valor);
+		conta.deposita(valor);
+	}
+
 	public abstract String getTipo();
+
+	@Override
+	public String toString() {
+		return "[titular=" + titular + ", numero=" + numero + ", agencia=" + agencia + "]";
+	}
 
 }
