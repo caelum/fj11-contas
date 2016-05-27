@@ -1,5 +1,7 @@
 package br.com.caelum.contas;
 
+import java.util.List;
+
 import br.com.caelum.contas.modelo.Conta;
 import br.com.caelum.contas.modelo.ContaCorrente;
 import br.com.caelum.contas.modelo.ContaPoupanca;
@@ -32,4 +34,14 @@ public class ManipuladorDeContas {
 		conta.transfere(evento.getDouble("valorTransferencia"), destino);
 	}
 
+	public void salvaDados(Evento evento){
+		List<Conta> contas = evento.getLista("listaContas");
+		RepositorioDeContas repositorio = new RepositorioDeContas();
+		repositorio.salva(contas);
+	}
+	
+	public List<Conta> carregaDados() {
+		RepositorioDeContas repositorio = new RepositorioDeContas();
+		return repositorio.carrega();
+	}
 }
