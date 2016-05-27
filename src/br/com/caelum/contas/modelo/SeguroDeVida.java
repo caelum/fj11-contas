@@ -1,6 +1,6 @@
 package br.com.caelum.contas.modelo;
 
-public class SeguroDeVida {
+public class SeguroDeVida implements Tributavel {
 
 	private String titular;
 	private int numeroApolice;
@@ -28,5 +28,15 @@ public class SeguroDeVida {
 
 	public void setValor(double valor) {
 		this.valor = valor;
+	}
+
+	@Override
+	public double getValorImposto() {
+		return 42 + valor * 0.2;
+	}
+
+	@Override
+	public String getTipo() {
+		return "Seguro de Vida";
 	}
 }
