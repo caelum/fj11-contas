@@ -21,7 +21,11 @@ public class ManipuladorDeContas {
 
 	public void saca(Evento evento) {
 		double valor = evento.getDouble("valorOperacao");
-		conta.saca(valor);
+		if (conta.getTipo().equals("Conta Corrente")){
+			conta.saca(valor - 0.10);
+		} else {
+			conta.saca(valor);
+		}
 	}
 
 	public void deposita(Evento evento) {

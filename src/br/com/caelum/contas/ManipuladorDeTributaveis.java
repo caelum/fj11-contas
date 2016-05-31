@@ -1,7 +1,5 @@
 package br.com.caelum.contas;
 
-import java.util.List;
-
 import br.com.caelum.contas.modelo.Tributavel;
 import br.com.caelum.javafx.api.util.Evento;
 
@@ -11,8 +9,8 @@ public class ManipuladorDeTributaveis {
 	
 	public void calculaImpostos(Evento evento){
 		total = 0;
-		List<Tributavel> lista = evento.getLista("listaTributaveis");
-		for (Tributavel t : lista) {
+		for (int i = 0; i < evento.getTamanhoDaLista("listaTributaveis"); i++) {
+			Tributavel t = evento.getTributavel("listaTributaveis", i);
 			total += t.getValorImposto();
 		}
 	}
