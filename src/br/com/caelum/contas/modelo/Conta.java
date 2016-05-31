@@ -5,8 +5,8 @@ public abstract class Conta {
 	private int numero;
 	private String agencia;
 	private String titular;
-	private double saldo;
-	
+	protected double saldo;
+
 	public Conta() {
 	}
 
@@ -46,6 +46,9 @@ public abstract class Conta {
 	}
 
 	public void deposita(double valor) {
+		if (valor < 0) {
+			throw new IllegalArgumentException("Valor menor do que 0");
+		}
 		this.saldo += valor;
 	}
 
