@@ -47,7 +47,7 @@ public class RepositorioDeContas {
 				contas.add(conta);
 			}
 		} catch (FileNotFoundException e) {
-			return contas;
+			System.out.println("Não tem arquivo ainda");
 		}
 		return contas;
 	}
