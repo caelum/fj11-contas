@@ -1,5 +1,6 @@
 package br.com.caelum.contas;
 
+import java.util.Collections;
 import java.util.List;
 
 import br.com.caelum.contas.modelo.Conta;
@@ -43,5 +44,10 @@ public class ManipuladorDeContas {
 	public List<Conta> carregaDados() {
 		RepositorioDeContas repositorio = new RepositorioDeContas();
 		return repositorio.carrega();
+	}
+	
+	public void ordenaLista(Evento evento) {
+		List<Conta> contas = evento.getLista("destino");
+		Collections.sort(contas);
 	}
 }
